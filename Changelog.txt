@@ -1,0 +1,19 @@
+*Passed variables form JS to Python using flask
+*ShowDataframe in another window
+*Styled the page
+*Solved internal exception when an unknown stock was in the input
+
+
+Doing
+*Footer 80%
+    -Poner footer a la pagina generada
+*Dataframe 50%
+
+*Dashboard
+    -Cambiar fondo del dahsboard a invisible
+TODO
+*Changelog
+*Improve algo
+    divide the risk and return of sp500 and combine it with btc
+    
+    
