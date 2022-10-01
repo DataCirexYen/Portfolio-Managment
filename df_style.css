@@ -11,13 +11,21 @@
     margin-left: 7%;
     font-size: 1.4rem;
  }
-
+p{
+    text-align: center;
+    margin-left: 7%;
+}
+ h2{
+    text-align: center;
+ }
 body{
     background-color: #2C3639; 
     color: #E7F6F2;
     min-height: 100vh;
     text-rendering: optimizeLegibility;
     margin: 0;
+    font-size: 1.4rem;
+    text-rendering: optimizeLegibility
 
 }
 .Links{
@@ -50,6 +58,7 @@ footer{
 th,td{
     border: 1px solid rgba(0,0,0,.5);
     padding: 7px;
+    
 }
 img{
     position: relative;
@@ -57,17 +66,24 @@ img{
 }
 
 .TItulo{
-    color: #2C3639;
-}
+    color: #E7F6F2;
 
+}
+.GraphCont{
+    margin-left: auto;
+
+}
+#T_8b91d{
+    margin-left: 18vw;
+}
 .Cen{
     text-align: center;
-    position: absolute;
-    left: 50%;
+    display: flex;
+    align-items: center;
+    ;
 
-    width: 20px;
-    height: 20px;
-    margin-left: -10px;
+    
+    
     /* -1/2 width */
     margin-top: -10px;
     /* -1/2 height */

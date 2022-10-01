@@ -12,13 +12,16 @@
 
 <div class="Contar" >
     <h1 id="TItle"> Creating a Stock/Crypto portfolio</h1>
-    <p class="">Donate what you can to support the project <br>Buy LilElseCaller a coffe :) </p>
-    <p class="BCH"><b>BCH wallet</b> bitcoincash:qrm6nxeqphjw58nlmcxlw5qzjqkhy0uws56dnmxwep</p>
-    <p ><b>Polygon/Eth wallet</b> 0xE3f3ECEd53E20EC0Cf1f63a4ba0074F598C971bd </p>
-    <img src="C:\Users\lloni\Code\Portfolio project\templates\bch-bitcoin.gif" />
+    <p class="">Donate what you can to support the project<br><b class="THIS">20 usd to get a real domain</b> <br>Buy LilElseCaller a coffe :) </p>
+    <div class="Coainer">
+        <p class="BCH"><b>BCH wallet</b> bitcoincash:qrm6nxeqphjw58nlmcxlw5qzjqkhy0uws56dnmxwep</p>
+        <p ><b>Polygon/Eth wallet</b> 0xE3f3ECEd53E20EC0Cf1f63a4ba0074F598C971bd </p>
+        
+        <img src="{{url_for('static', filename='bch-bitcoin.gif')}}" />
+    </div>
 </div>
 <footer>
-    <a class="Links" href="Donations.html">Donate!</a>
+    <a class="Links" href="{{url_for('donate')}}">Donate!</a>
     <a class="Links" href="https://twitter.com/LilElseCaller">Twitter</a>
     <a class="Links" href="https://medium.com/@LilElseCaller">Medium</a>
     <a class="Links" href="https://github.com/egarcia00">Algo Creator</a></p>
@@ -51,7 +54,7 @@ html, body {
     margin:0px;
 }
 	/* sets the body height of the browser, so that backgrounds and div heights work correctly. Color and background will almost certainly be altered; they are just placeholders */
-	
+
 body {
 	font-size: 1.4rem;
 	text-rendering: optimizeLegibility;
@@ -138,7 +141,9 @@ input:required:after {
 }
 
 .This{
-    text-decoration: underline;
+    
+    font-weight: normal;
+    text-decoration: underline !important;
 }
 
 .container_box{
