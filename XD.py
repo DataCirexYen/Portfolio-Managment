@@ -17,10 +17,10 @@ html_string = '''
   <div class="Cen">
     {table}
   </div>
-  <div class="LEFT">
+ 
   <h1 class="TItulo">Graph</h1>
   <img src='my_plot.png'/>
-  </div>
+  
   <footer>
     
     <a class="Links" href="https://twitter.com/LilElseCaller">Twitter</a>
@@ -207,15 +207,10 @@ def index():
 
        
         graph=output.plot(kind="pie",y="Asset % in Portfolio", figsize=(5, 5)).figure
-
-
-        #graph.update_layout(paper_bgcolor="rgba(0,0,0,0)")
-        #graph=output.plot(kind="pie",y="Asset % in Portfolio", figsize=(5, 5)).figure
-
-        graph.savefig('my_plot.png',format="png")
+        
+        graph.savefig('my_plot.png',format="png",facecolor="#2C3639" , transparent=True)
         output= output.style.format({"Asset % in Portfolio": "{:.2%}"})
         
-       
         
 
         with open('str.html', 'w') as f:
