@@ -12,8 +12,7 @@ app = Flask(__name__)
 Randomint=int(f'{random.randrange(1, 10**10):03}')
 
 pd.set_option('colheader_justify', 'center')   # FOR TABLE <th>
-
-html_string = '''
+a1 = '''
 <html>
   <head><title>HTML Pandas Dataframe with CSS</title>
    <link rel= "stylesheet" type= "text/css" href= "{{{{url_for('static',filename='style.css') }}}}">
@@ -23,11 +22,17 @@ html_string = '''
   <p>if you want to help the project please consider donating, BCH and matic friendly!</p>
   <h1>Here are your results</h1>
   <div class="Cen">
-    {table}
+    
   <img src="{{{{url_for('static', filename='polygon-matic.gif')}}}}" />
+  {table}
  <div class="GraphCont">
-  <h2 class="TItulo">Graph</h2>
+  <h2 class="TItulo">Graph</h2>'''
+a2='''
+  <img src="{{{{url_for('static','''  
+  
 
+a3=f'''filename='{Randomint}.png')'''
+a4='''}}}}" />
   </div>
   </div>
   <footer>
@@ -40,8 +45,10 @@ html_string = '''
 </footer>
   </body>
 </html>
-
 '''
+
+html_string=a1+a2+a3+a4
+
 #Download multiple assets historys
 def download(tickers, start=None, end=None, actions=False, threads=True,
              group_by='column', auto_adjust=False, back_adjust=False,
@@ -229,9 +236,8 @@ def index():
                 output=output.set_index("Ticker")
                 output.columns.name = output.index.name
                 output.index.name = None
-            
-                graph=output.plot(kind="pie",y="Asset % in Portfolio", figsize=(5, 5)).figure
                 
+                graph=output.plot(kind="pie",y="Asset % in Portfolio", figsize=(5, 5), label='').figure
                 graph.savefig(f'static\{Randomint}.png',format="png",facecolor="#2C3639" , transparent=True)
                 output= output.style.format({"Asset % in Portfolio": "{:.2%}"})
                 
@@ -254,9 +260,6 @@ def Change():
     return render_template(f'{Randomint}.html')                
                 
 
-@app.route("/eo")
-def eo():
-    return render_template('eo.html')
 
 #Donations.html
 #index.html

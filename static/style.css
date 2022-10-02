@@ -67,20 +67,22 @@ img{
 
 .TItulo{
     color: #E7F6F2;
+    
 
 }
-.GraphCont{
-    margin-left: auto;
 
-}
 #T_8b91d{
-    margin-left: 18vw;
+    
+    position:relative;
+   padding-left: 10px;
 }
 .Cen{
-    text-align: center;
-    display: flex;
+    position: absolute;
+    left: 13vw;
+    display: inline-flex;
     align-items: center;
-    ;
+    
+    
 
     
     
