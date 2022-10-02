@@ -1,7 +1,8 @@
 
 <html>
-  <head><title>HTML Pandas Dataframe with CSS</title></head>
-  <link rel="stylesheet" type="text/css" href="df_style.css"/>
+  <head><title>HTML Pandas Dataframe with CSS</title>
+  <link rel= "stylesheet" type= "text/css" href= "{{url_for('static',filename='style.css') }}">
+</head>
   <body>
   <h1>Stock/Crypto portfolio</h1>
   <p>if you want to help the project please consider donating, BCH and matic friendly!</p>
@@ -9,30 +10,26 @@
   <div class="Cen">
     <style type="text/css">
 </style>
-<table id="T_9b4b3">
+<table id="T_b4443">
   <thead>
     <tr>
       <th class="index_name level0" >Ticker</th>
-      <th id="T_9b4b3_level0_col0" class="col_heading level0 col0" >Asset % in Portfolio</th>
+      <th id="T_b4443_level0_col0" class="col_heading level0 col0" >Asset % in Portfolio</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_9b4b3_level0_row0" class="row_heading level0 row0" >ADA-USD</th>
-      <td id="T_9b4b3_row0_col0" class="data row0 col0" >54.49%</td>
+      <th id="T_b4443_level0_row0" class="row_heading level0 row0" >COME.BA</th>
+      <td id="T_b4443_row0_col0" class="data row0 col0" >83.43%</td>
     </tr>
     <tr>
-      <th id="T_9b4b3_level0_row1" class="row_heading level0 row1" >ETH-USD</th>
-      <td id="T_9b4b3_row1_col0" class="data row1 col0" >45.41%</td>
-    </tr>
-    <tr>
-      <th id="T_9b4b3_level0_row2" class="row_heading level0 row2" >DOGE-USD</th>
-      <td id="T_9b4b3_row2_col0" class="data row2 col0" >0.10%</td>
+      <th id="T_b4443_level0_row1" class="row_heading level0 row1" >ADA-USD</th>
+      <td id="T_b4443_row1_col0" class="data row1 col0" >16.57%</td>
     </tr>
   </tbody>
 </table>
-
-  <img src="{url_for('static', filename='polygon-matic.gif.gif')}" />
+  <img src="{{url_for('static', filename='bch-bitcoin.gif')}}" />
+  <img src="{{url_for('static', filename='polygon-matic.gif')}}" />
  <div class="GraphCont">
   <h2 class="TItulo">Graph</h2>
   <img src='my_plot.png'/>
@@ -48,3 +45,4 @@
 </footer>
   </body>
 </html>
+

@@ -1,31 +1,37 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template,redirect
 import yfinance as yf
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import webbrowser
 import plotly.express as px
+import random
+
+
+app = Flask(__name__)
+Randomint=int(f'{random.randrange(1, 10**10):03}')
 
 pd.set_option('colheader_justify', 'center')   # FOR TABLE <th>
 
 html_string = '''
 <html>
-  <head><title>HTML Pandas Dataframe with CSS</title></head>
-  <link rel="stylesheet" type="text/css" href="df_style.css"/>
+  <head><title>HTML Pandas Dataframe with CSS</title>
+   <link rel= "stylesheet" type= "text/css" href= "{{{{url_for('static',filename='style.css') }}}}">
+</head>
   <body>
   <h1>Stock/Crypto portfolio</h1>
   <p>if you want to help the project please consider donating, BCH and matic friendly!</p>
   <h1>Here are your results</h1>
   <div class="Cen">
     {table}
-  <img src="{{url_for('static', filename='polygon-matic.gif.gif')}}" />
+  <img src="{{{{url_for('static', filename='polygon-matic.gif')}}}}" />
  <div class="GraphCont">
   <h2 class="TItulo">Graph</h2>
-  <img src='my_plot.png'/>
+
   </div>
   </div>
   <footer>
-    <a class="Links" href="{{url_for('donate')}}">Donate!</a>
+    <a class="Links" href="{{{{url_for('donate')}}}}">Donate!</a>
     <a class="Links" href="https://twitter.com/LilElseCaller">Twitter</a>
     <a class="Links" href="https://medium.com/@LilElseCaller">Medium</a>
     <a class="Links" href="https://github.com/egarcia00">Algo Creator</a></p>
@@ -34,6 +40,7 @@ html_string = '''
 </footer>
   </body>
 </html>
+
 '''
 #Download multiple assets historys
 def download(tickers, start=None, end=None, actions=False, threads=True,
@@ -77,8 +84,11 @@ def download(tickers, start=None, end=None, actions=False, threads=True,
             If not None stops waiting for a response after given number of
             seconds. (Can also be a fraction of a second e.g. 0.01)
     """
+
+
 portfolio_ =[]
-app = Flask(__name__)
+PortString=""
+
 
 
    
@@ -222,21 +232,34 @@ def index():
             
                 graph=output.plot(kind="pie",y="Asset % in Portfolio", figsize=(5, 5)).figure
                 
-                graph.savefig('my_plot.png',format="png",facecolor="#2C3639" , transparent=True)
+                graph.savefig(f'static\{Randomint}.png',format="png",facecolor="#2C3639" , transparent=True)
                 output= output.style.format({"Asset % in Portfolio": "{:.2%}"})
                 
                 
 
-                with open(f'templates/{portfolio_}.html', 'w') as f:
+                with open(f'templates/{Randomint}.html', 'w') as f:
                     f.write(html_string.format(table=output.to_html(classes='mystyle')))
 
-                filename = f'{portfolio_}.html' 
-                webbrowser.open_new_tab(f"/{portfolio_}")
+                filename = f'{Randomint}.html' 
+
+
     else:
         print("Pusiste una sola accion o una huevada asi, hacer un screen")
-    return render_template('index.html')
+    return render_template('index.html') 
 
 
+
+@app.route(f"/{Randomint}",methods=['GET', 'POST'])
+def Change():
+    return render_template(f'{Randomint}.html')                
+                
+
+@app.route("/eo")
+def eo():
+    return render_template('eo.html')
+
+#Donations.html
+#index.html
 
 @app.route("/donate")
 def donate():
