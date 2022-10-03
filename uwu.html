@@ -1,0 +1,19 @@
+<html lang="en">
+  <head>
+    <title>Write example</title>
+
+    <script>
+    async function load_home() {
+        let url = 'Portfolio-Managment\awa.txt'
+
+  content.innerHTML = await (await fetch(url)).text();
+}
+    </script>
+  </head>
+
+  <body onload="load_home();">
+    <div id="topBar"> <p href="C:\Users\lloni\Code\Portfolio-Managment\awa.txt" >  </p> </div>
+    <div id="content"> </div>
+  </body>
+</html>
+

@@ -6,16 +6,15 @@ import matplotlib.pyplot as plt
 import webbrowser
 import plotly.express as px
 import random
-
-
+import os
+from jinja2 import *
 app = Flask(__name__)
 Randomint=int(f'{random.randrange(1, 10**10):03}')
-
 pd.set_option('colheader_justify', 'center')   # FOR TABLE <th>
 a1 = '''
 <html>
   <head><title>HTML Pandas Dataframe with CSS</title>
-   <link rel= "stylesheet" type= "text/css" href= "{{{{url_for('static',filename='style.css') }}}}">
+   <link rel= "stylesheet" type= "text/css" href= "{{url_for('static',filename='style.css') }}">
 </head>
   <body>
   <h1>Stock/Crypto portfolio</h1>
@@ -23,20 +22,25 @@ a1 = '''
   <h1>Here are your results</h1>
   <div class="Cen">
     
-  <img src="{{{{url_for('static', filename='polygon-matic.gif')}}}}" />
-  {table}
+  <img src="{{url_for('static', filename='polygon-matic.gif')}}" />
+
+  {% for table in tables %}
+    {{titles[loop.index]}}
+    {{ table|safe }}
+  {% endfor %}
+
  <div class="GraphCont">
   <h2 class="TItulo">Graph</h2>'''
 a2='''
-  <img src="{{{{url_for('static','''  
+  <img src="{{url_for('static','''  
   
 
 a3=f'''filename='{Randomint}.png')'''
-a4='''}}}}" />
+a4='''}}" />
   </div>
   </div>
   <footer>
-    <a class="Links" href="{{{{url_for('donate')}}}}">Donate!</a>
+    <a class="Links" href="{{url_for('donate')}}">Donate!</a>
     <a class="Links" href="https://twitter.com/LilElseCaller">Twitter</a>
     <a class="Links" href="https://medium.com/@LilElseCaller">Medium</a>
     <a class="Links" href="https://github.com/egarcia00">Algo Creator</a></p>
@@ -101,7 +105,9 @@ PortString=""
    
 @app.route('/', methods=['GET', 'POST'])
 def index():
-
+    if os.path.exists(f"Portfolio-Managment\templates\{Randomint}.html"):
+     os.remove(f"Portfolio-Managment\templates\{Randomint}.html")
+     
     if request.method == 'POST':
         a=request.form .get('longitude')
         benchmark_ = ["^GSPC",]
@@ -225,7 +231,7 @@ def index():
 
 
             
-                            
+                global output    
                 #Output Table of Distributions
                 portfolio_loc = np.where((portfolio_array[:,0]==(best_portfolio[0]/trade_days_per_year))&(portfolio_array[:,1]==(best_portfolio[1])))[0][0]
                 best_distribution = distrib_vector[portfolio_loc][0].tolist()
@@ -241,13 +247,9 @@ def index():
                 graph.savefig(f'static\{Randomint}.png',format="png",facecolor="#2C3639" , transparent=True)
                 output= output.style.format({"Asset % in Portfolio": "{:.2%}"})
                 
-                
-
                 with open(f'templates/{Randomint}.html', 'w') as f:
-                    f.write(html_string.format(table=output.to_html(classes='mystyle')))
-
-                filename = f'{Randomint}.html' 
-
+                    f.write(html_string)
+                    
 
     else:
         print("Pusiste una sola accion o una huevada asi, hacer un screen")
@@ -257,8 +259,8 @@ def index():
 
 @app.route(f"/{Randomint}",methods=['GET', 'POST'])
 def Change():
-    return render_template(f'{Randomint}.html')                
-                
+    return render_template(f'{Randomint}.html',tables=[output.to_html(classes='data')], titles=output.columns.values)                
+    
 
 
 #Donations.html
@@ -269,5 +271,5 @@ def donate():
     return render_template('Donations.html')
         
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
 
