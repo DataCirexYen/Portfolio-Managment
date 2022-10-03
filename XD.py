@@ -249,7 +249,7 @@ def index():
                 
                 with open(f'templates/{Randomint}.html', 'w') as f:
                     f.write(html_string)
-                    webbrowser.open_new_tab(f"http://127.0.0.1:5000//{Randomint}")
+                    webbrowser.open_new_tab(f"https://portfolioanalyzer.xyz/{Randomint}")
 
                     
 
@@ -273,5 +273,5 @@ def donate():
     return render_template('Donations.html')
         
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
 
