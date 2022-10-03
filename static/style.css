@@ -57,7 +57,7 @@ footer{
 }
 th,td{
     border: 1px solid rgba(0,0,0,.5);
-    padding: 7px;
+    padding: 18px;
     
 }
 img{
@@ -71,17 +71,12 @@ img{
 
 }
 
-#T_8b91d{
-    
-    position:relative;
-   padding-left: 10px;
-}
 .Cen{
     position: absolute;
-    left: 13vw;
-    display: inline-flex;
+    left: 9vw;
+    display: flex;
     align-items: center;
-    
+    column-gap: 4vw;
     
 
     
@@ -90,6 +85,19 @@ img{
     margin-top: -10px;
     /* -1/2 height */
 }
+
+
+.GraphCont{
+ padding-right: 6vw;
+}
+
+.BCH1{
+    color: greenyellow;
+}
+.MATIC1{
+    color:violet;
+}
+
 .LEFT{
     margin-top:-42;
     height: 95%;

@@ -18,7 +18,7 @@ a1 = '''
 </head>
   <body>
   <h1>Stock/Crypto portfolio</h1>
-  <p>if you want to help the project please consider donating, BCH and matic friendly!</p>
+  <p>if you want to help the project please consider donating, <a class="BCH1" href="{{url_for('donate')}}">BCH!</a> and   <a class="MATIC1" href="{{url_for('donate')}}">matic!</a> friendly!</p>
   <h1>Here are your results</h1>
   <div class="Cen">
     
@@ -249,6 +249,8 @@ def index():
                 
                 with open(f'templates/{Randomint}.html', 'w') as f:
                     f.write(html_string)
+                    webbrowser.open_new_tab(f"http://127.0.0.1:5000//{Randomint}")
+
                     
 
     else:
