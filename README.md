@@ -7,3 +7,4 @@ Market Benchmark: We need to define what we will consider as our market benchmar
 As mentioned, this is not a tool to start your analysis on the portfolio you want to build, and is only showing what happened in the past, not trying to find what is happening in the future. The optimization power of a simple code is what really amazed me while going through this exercise, because we can map and evaluate complex decisions in a brief period
 
 https://www.portfolioanalyzer.xyz/
+![image](https://user-images.githubusercontent.com/98498927/210278727-50ad15f1-20fe-4eb7-9fa9-daa29b9e0e35.png)
